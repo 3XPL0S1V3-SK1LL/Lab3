@@ -1,0 +1,78 @@
+import java.util.ArrayList;
+import inanimateobjects.*;
+import livingthings.abilities.Abilities;
+import livingthings.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+		ArrayList<Abilities> abilities = new ArrayList<>();
+		Place hall = new Place();
+		hall.setPlace(Place.Places.HALL);
+		Shorty secondBaby =new Shorty("Лена", Human.Sex.FEMALE);
+		secondBaby.setHeaddress(ChildClothing.Headdress.BOW);
+		secondBaby.setTopOuterWear(ChildClothing.TopOuterWear.DRESS);
+		secondBaby.setShoes(ChildClothing.Shoes.SHOES);
+		secondBaby.setAccessories(ChildClothing.Accessories.APRON);
+		secondBaby.getAccessories().setAccessoriesColor(ChildClothing.Colors.PINK);
+		secondBaby.getAccessories().setAccessoriesPicture(ChildClothing.Picture.SQUIRREL);
+		secondBaby.getAccessories().setAccessoriesPictureColor(ChildClothing.Colors.RED);
+		secondBaby.setPlace(hall);
+		Shorty firstBaby = new Shorty("Маша", Human.Sex.FEMALE);
+		firstBaby.setPlace(hall);
+		firstBaby.setHeaddress(ChildClothing.Headdress.BOW);
+		firstBaby.setTopOuterWear(ChildClothing.TopOuterWear.T_SHIRT);
+		firstBaby.setDownOuterWear(ChildClothing.DownOuterWear.SKIRT);
+		firstBaby.setShoes(ChildClothing.Shoes.SHOES);
+		firstBaby.setAccessories(ChildClothing.Accessories.APRON);
+		firstBaby.getAccessories().setAccessoriesColor(ChildClothing.Colors.ORANGE);
+		firstBaby.getAccessories().setAccessoriesPicture(ChildClothing.Picture.RABBIT);
+		firstBaby.getAccessories().setAccessoriesPictureColor(ChildClothing.Colors.GREEN);
+		firstBaby.addAbility(new Abilities("спорить", "c другой малышкой"));
+		secondBaby.addAbility(new Abilities("спорить", "c другой малышкой"));
+		Place bedroom = new Place();
+		bedroom.setPlace(Place.Places.BEDROOM);
+		Shorty neznaika = new Shorty("Незнайка", Human.Sex.MALE);
+		firstBaby.setHeaddress(ChildClothing.Headdress.HAT);
+		neznaika.setTopOuterWear(ChildClothing.TopOuterWear.SHIRT);
+		neznaika.getTopOuterWear().setTopOuterWearColor(ChildClothing.Colors.ORANGE);
+		neznaika.setDownOuterWear(ChildClothing.DownOuterWear.TROUSERS);
+		neznaika.getDownOuterWear().setDownOuterWearColor(ChildClothing.Colors.YELLOW);
+		neznaika.setShoes(ChildClothing.Shoes.BOOTS);
+		neznaika.getShoes().setShoesColor(ChildClothing.Colors.ORANGE);
+		neznaika.setAccessories(ChildClothing.Accessories.TIE);
+		neznaika.getAccessories().setAccessoriesColor(ChildClothing.Colors.GREEN);
+		neznaika.setPlace(bedroom);
+		neznaika.addAbility(new Abilities("хотеть", "посмотреть кто там спорит"));
+		neznaika.addAbility(new Abilities("вскочить с постели"));
+		Doors theDoorFromBedToHall = new Doors(bedroom, hall);
+		neznaika.addAbility(new Abilities("открыть дверь"));
+		theDoorFromBedToHall.open();
+		neznaika.changePlace(hall);
+		firstBaby.addAbility(new Abilities("отскочить", "в сторону"));
+		secondBaby.addAbility(new Abilities("отскочить", "в сторону"));
+		firstBaby.addAbility(new Abilities("схватиться за лоб"));
+		secondBaby.addAbility(new Abilities("схватиться за лоб"));
+		firstBaby.addAbility(new Abilities("смотреть на Незнайку", "c испугом"));
+		secondBaby.addAbility(new Abilities("смотреть на Незнайку", "c испугом"));
+		firstBaby.addAbility(new Abilities("заморгать глазами"));
+		secondBaby.addAbility(new Abilities("заморгать глазами"));
+		firstBaby.addAbility(new Abilities("заплакать"));
+		secondBaby.addAbility(new Abilities("заплакать"));
+		firstBaby.addAbility(new Abilities("повернуться"));
+		secondBaby.addAbility(new Abilities("повернуться"));
+		Place stairs = new Place();
+		stairs.setPlace(Place.Places.STAIRS);
+		Place attic = new Place();
+		attic.setPlace(Place.Places.ATTIC);
+		Stairs stairsFromHallToAttic = new Stairs(hall, attic);
+		stairsFromHallToAttic.setHeight(16);
+		stairsFromHallToAttic.setWidth(0.4);
+		firstBaby.changePlace(stairs);
+		secondBaby.changePlace(stairs);
+		firstBaby.addAbility(new Abilities("подниматься"));
+		secondBaby.addAbility(new Abilities("подниматься"));
+		firstBaby.climbTheStairs(stairsFromHallToAttic);
+		firstBaby.climbTheStairs(stairsFromHallToAttic);
+	}
+}
